@@ -84,6 +84,7 @@ class Puzzle {
 								$this->_swap($block_index, $current_block_index);
 								return true;
 							}
+							break;
 						}
 					}
 				}
@@ -104,6 +105,7 @@ class Puzzle {
 								$this->_swap($block_index, $current_block_index);
 								return true;
 							}
+							break;
 						}
 					}
 				}
@@ -124,6 +126,7 @@ class Puzzle {
 								$this->_swap($block_index, $current_block_index);
 								return true;
 							}
+							break;
 						}
 					}
 				}
@@ -144,6 +147,7 @@ class Puzzle {
 								$this->_swap($block_index, $current_block_index);
 								return true;
 							}
+							break;
 						}
 					}
 				}
@@ -219,11 +223,11 @@ class Puzzle {
 	public function solved() {
 		// iterate over the puzzle and check that all the blocks are in the correct place
 		foreach ($this->_puzzle as $index => $block) {
-			//if the current position matches the complete condition for all blocks then we're done
-			if ($block[0] != $block[2] || $block[1] != $block[3]) {
+			if (!$block->is_complete()) {
 				return false;
 			}
 		}
+		// default state, means all blocks were complete
 		return true;
 	}
 }
